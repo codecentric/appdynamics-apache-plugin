@@ -1,0 +1,25 @@
+<monitor>
+	<name>AppDynamicsApacheMonitor</name>
+    <enabled>true</enabled>
+	<type>managed</type>
+	<description>Monitors Apache Server using mod_status</description>
+    <monitor-configuration>
+    </monitor-configuration>
+	<monitor-run-task>
+	      <execution-style>periodic</execution-style>
+	      <execution-frequency-in-seconds>60</execution-frequency-in-seconds>
+	      <name>Apache Monitor Run Task</name>
+    	  <display-name>Apache Monitor Task</display-name>
+    	  <description>Apache Monitor Task</description>
+    	  <type>java</type>
+    	  <execution-timeout-in-secs>120</execution-timeout-in-secs>
+    	  <task-arguments>
+	        	<argument name="port" is-required="false"/>
+	        	<argument name="host" is-required="false"/>
+    	  </task-arguments>
+    	  <java-task>
+          	<classpath>appdynamics-apache-plugin.jar</classpath>
+          	<impl-class>de.codecentric.appdynamics.apache.ApacheMonitor</impl-class>
+          </java-task>
+	</monitor-run-task>
+</monitor>
